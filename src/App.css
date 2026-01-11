@@ -9,8 +9,8 @@
 .company-name {
   font-size: clamp(2rem, 8vw, 4.5rem);
   font-weight: 300;
-  letter-spacing: 0.05em;
-  color: #1a1a1a;
+  letter-spacing: 0.02em;
+  color: #2d2d2d;
   animation: fadeIn 1.2s ease-out forwards;
   opacity: 0;
 }
