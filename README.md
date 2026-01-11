@@ -1,5 +1,7 @@
 # BeFlux, Inc. ウェブサイト
 
+https://beflux.jp
+
 BeFlux, Inc. の公式ウェブサイトです。
 
 ## 技術スタック
