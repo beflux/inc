@@ -32,8 +32,6 @@ jobs:
 
       - name: Build
         run: npm run build
-        env:
-          CUSTOM_DOMAIN: ${{ hashFiles('public/CNAME') != '' }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
