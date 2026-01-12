@@ -1,9 +1,10 @@
 # BeFlux, Inc. ウェブサイト
 
-https://beflux.jp (カスタムドメイン設定後)
-https://beflux.github.io/inc (GitHub Pages)
+https://beflux.jp
 
 BeFlux, Inc. の公式ウェブサイトです。
+
+- [デザインコンセプト](./DESIGN.md)
 
 ## 技術スタック
 
