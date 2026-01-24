@@ -13,11 +13,11 @@
 
 ---
 
-## Phase 1: Next.js への移行
+## Phase 1: Next.js への移行 ✅
 
 ### 1.1 プロジェクト構造の変更
-- [ ] Next.js 15 (App Router) のセットアップ
-- [ ] ディレクトリ構造の再編成
+- [x] Next.js 15 (App Router) のセットアップ
+- [x] ディレクトリ構造の再編成
   ```
   src/
   ├── app/
@@ -30,24 +30,32 @@
   ```
 
 ### 1.2 設定ファイルの更新
-- [ ] `next.config.ts` の作成
-- [ ] `tsconfig.json` を Next.js 用に更新
-- [ ] `package.json` のスクリプト・依存関係を更新
+- [x] `next.config.ts` の作成
+- [x] `tsconfig.json` を Next.js 用に更新
+- [x] `package.json` のスクリプト・依存関係を更新
 
 ### 1.3 Tailwind CSS の設定
-- [ ] `tailwind.config.ts` の作成（Next.js 形式）
-- [ ] `postcss.config.mjs` の作成
-- [ ] カスタムテーマ（色、フォント、アニメーション）の移行
+- [x] `postcss.config.mjs` の作成
+- [x] カスタムテーマ（色、フォント、アニメーション）の移行
 
 ### 1.4 コンポーネントの移行
-- [ ] `App.tsx` → `src/app/page.tsx` へ移行
-- [ ] メタデータ（title, description, OGP）の設定
-- [ ] favicon の設定
+- [x] `App.tsx` → `src/app/page.tsx` へ移行
+- [x] メタデータ（title, description, OGP）の設定
+- [x] favicon の設定
+- [x] next/font による Inter フォントの最適化
 
 ### 1.5 Firebase の移行
-- [ ] 環境変数ファイル（`.env.local`）の作成
-- [ ] Firebase 設定を環境変数から読み込むよう変更
-- [ ] `.env.example` の作成（テンプレート用）
+- [x] 環境変数ファイル（`.env.local`）の作成
+- [x] Firebase 設定を環境変数から読み込むよう変更
+- [x] `.env.example` の作成（テンプレート用）
+
+### 1.6 クリーンアップ（Vite 関連の削除）
+- [x] `vite.config.ts` の削除
+- [x] `.github/workflows/deploy.yml` の削除（GitHub Pages 用）
+- [x] `public/CNAME` の削除
+- [x] Vite 関連の依存関係を削除
+- [x] `dist/` ディレクトリの削除
+- [x] 旧 `src/main.tsx`, `src/App.tsx` の削除
 
 ---
 
@@ -79,20 +87,8 @@ PR                → Preview (自動生成URL)
 
 ---
 
-## Phase 4: クリーンアップ
+## Phase 4: ドキュメント更新
 
-### 4.1 不要ファイルの削除
-- [ ] `vite.config.ts` の削除
-- [ ] `.github/workflows/deploy.yml` の削除（GitHub Pages 用）
-- [ ] `public/CNAME` の削除
-- [ ] Vite 関連の依存関係を `package.json` から削除
-  - `vite`
-  - `@vitejs/plugin-react`
-  - `@tailwindcss/vite`
-- [ ] `dist/` ディレクトリの削除
-- [ ] 旧 `src/main.tsx`, `src/App.tsx` の削除
-
-### 4.2 ドキュメントの更新
 - [ ] `README.md` の更新（開発・デプロイ手順）
 
 ---
