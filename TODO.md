@@ -59,30 +59,30 @@
 
 ---
 
-## Phase 2: Vercel デプロイの設定
+## Phase 2: Vercel デプロイの設定 ✅
 
 ### 2.1 Vercel プロジェクトの作成
-- [ ] Vercel アカウントの確認/作成
-- [ ] GitHub リポジトリを Vercel に接続
-- [ ] ビルド設定の確認（Next.js は自動検出）
+- [x] Vercel アカウントの確認/作成
+- [x] GitHub Actions 経由でデプロイ設定
+- [x] ビルド設定の確認
 
 ### 2.2 環境変数の設定
-- [ ] Production 用の環境変数を Vercel に登録
+- [x] Production 用の環境変数を Vercel に登録
 
 ### 2.3 カスタムドメインの設定
-- [ ] `beflux.jp` を Vercel に設定
-- [ ] DNS レコードの更新（A / CNAME）
-- [ ] SSL 証明書の確認（Vercel が自動発行）
+- [x] `beflux.jp` を Vercel に設定
+- [x] `www.beflux.jp` → `beflux.jp` リダイレクト設定
+- [x] SSL 証明書の確認（Vercel が自動発行）
 
 ---
 
-## Phase 3: ブランチ戦略・環境分離
+## Phase 3: ブランチ戦略・環境分離 ✅
 
 ### 3.1 デプロイ戦略
 ```
 main ブランチ      → Production (beflux.jp)
 feature/* ブランチ → Preview (自動生成URL)
-PR                → Preview (自動生成URL)
+PR                → Preview (自動生成URL + PRコメント)
 ```
 
 ---
