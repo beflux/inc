@@ -8,11 +8,21 @@ BeFlux, Inc. の公式ウェブサイトです。
 
 ## 技術スタック
 
+- Next.js 15 (App Router)
 - React 19
 - TypeScript
-- Vite
+- Tailwind CSS
+- Firebase Analytics
 
 ## 開発
+
+### 環境変数の設定
+
+```bash
+cp .env.example .env.local
+```
+
+`.env.local` を編集して Firebase の設定値を入力してください。
 
 ### 依存関係のインストール
 
@@ -26,7 +36,7 @@ npm install
 npm run dev
 ```
 
-http://localhost:5173 でサイトが表示されます。
+http://localhost:3000 でサイトが表示されます。
 
 ### ビルド
 
@@ -34,69 +44,50 @@ http://localhost:5173 でサイトが表示されます。
 npm run build
 ```
 
-`dist` ディレクトリに成果物が出力されます。
+### Lint
+
+```bash
+npm run lint
+```
 
 ## デプロイ
 
-GitHub Pagesへのデプロイは自動化されています。
-`main` ブランチにプッシュすると、GitHub Actions が自動的にビルドとデプロイを行います。
+Vercel へのデプロイは GitHub Actions で自動化されています。
 
-## カスタムドメインの設定
+| ブランチ / イベント | デプロイ先 |
+|---------------------|------------|
+| `main` へ push | Production (beflux.jp) |
+| PR 作成 | Preview (自動生成URL) |
 
-beflux.jp などのカスタムドメインを設定する手順です。
+### 環境変数
 
-### 1. DNS設定
+Vercel ダッシュボードで以下の環境変数を設定してください:
 
-ドメイン管理サービス（お名前.com、ムームードメイン等）で以下のいずれかを設定します。
+- `NEXT_PUBLIC_FIREBASE_API_KEY`
+- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+- `NEXT_PUBLIC_FIREBASE_APP_ID`
+- `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID`
 
-#### Apex ドメイン (beflux.jp) の場合
+### GitHub Secrets
 
-A レコードを以下の IP アドレスに設定：
+GitHub Actions でのデプロイに必要な Secrets:
 
-```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
+- `VERCEL_TOKEN` - Vercel API トークン
+- `VERCEL_ORG_ID` - Vercel Organization ID
+- `VERCEL_PROJECT_ID` - Vercel Project ID
 
-#### サブドメイン (www.beflux.jp) の場合
-
-CNAME レコードを設定：
-
-```
-www -> <GitHubユーザー名>.github.io
-```
-
-### 2. GitHub リポジトリの設定
-
-1. リポジトリの **Settings** → **Pages** を開く
-2. **Source** が「GitHub Actions」になっていることを確認
-3. **Custom domain** にドメイン名（例: `beflux.jp`）を入力
-4. **Enforce HTTPS** にチェックを入れる
-
-### 3. CNAME ファイルの確認
-
-`public/CNAME` ファイルにドメイン名が設定されていることを確認してください。
-このファイルはビルド時に `dist` ディレクトリにコピーされます。
+## ディレクトリ構成
 
 ```
-beflux.jp
+src/
+├── app/
+│   ├── layout.tsx      # ルートレイアウト
+│   ├── page.tsx        # トップページ
+│   └── globals.css     # グローバルスタイル
+├── components/         # React コンポーネント
+└── lib/
+    └── firebase.ts     # Firebase 設定
 ```
-
-### 4. DNS 反映の確認
-
-DNS 設定が反映されるまで数時間〜最大48時間かかる場合があります。
-以下のコマンドで確認できます：
-
-```bash
-dig beflux.jp +short
-```
-
-GitHub の IP アドレスが返ってくれば設定完了です。
-
-### トラブルシューティング
-
-- **404 エラーが出る場合**: DNS 設定が正しいか確認してください
-- **証明書エラーが出る場合**: HTTPS の証明書発行に時間がかかることがあります（最大24時間）
-- **デプロイされない場合**: GitHub Actions のワークフローログを確認してください
