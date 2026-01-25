@@ -16,11 +16,17 @@ const firebaseConfig = {
 // Initialize Firebase (prevent multiple initializations)
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
 
-// Analytics (only in browser)
+// Analytics (only in browser and production)
 let analytics: Analytics | null = null
 
+const isProduction = (): boolean => {
+  if (typeof window === "undefined") return false
+  const hostname = window.location.hostname
+  return hostname === "beflux.jp" || hostname === "www.beflux.jp"
+}
+
 export const getFirebaseAnalytics = async (): Promise<Analytics | null> => {
-  if (typeof window !== "undefined" && !analytics) {
+  if (typeof window !== "undefined" && !analytics && isProduction()) {
     const supported = await isSupported()
     if (supported) {
       analytics = getAnalytics(app)
